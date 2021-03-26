@@ -2,8 +2,11 @@ import discord
 from discord.ext import commands
 import datetime
 from discord.utils import get
+from decouple import config
 
 bot = commands.Bot(command_prefix = '.zp ')
+
+DISCORD_TOKEN = config('DISCORD_TOKEN')
 
 @bot.event
 async def on_ready():
@@ -16,15 +19,8 @@ async def dm(ctx, *, message):
 @bot.command()
 async def ping(ctx):
     moderator = get(ctx.guild.roles, id=824187269363007490)
-    embed = discord.Embed(
-    title="Kolokwium z pogramowania",
-    colour=discord.Colour(0x108510),
-    url="https://discordapp.com",
-    description=" Zagadnienia na kolokwium są na stronie [XYZ](https://pl.wikipedia.org/wiki/Programowanie_komputerów)",
-    timestamp=datetime.datetime(2021,3,10))
-
+    embed = discord.Embed(title="Kolokwium z pogramowania", colour=discord.Colour(0x108510), url="https://discordapp.com", description=" Zagadnienia na kolokwium są na stronie [XYZ](https://pl.wikipedia.org/wiki/Programowanie_komputerów)", timestamp=datetime.datetime(2021,3,10))
     embed.set_image(url="https://www.perforce.com/sites/default/files/image/2019-01/image-blog-what-code-quality.jpg")
-
     embed.add_field(name="Termin", value="25.03.2021")
     embed.add_field(name="Role", value=f'{moderator.mention}', inline=True)
     embed.add_field(name="Utworzone przez", value='XYZ', inline=True)
@@ -41,4 +37,4 @@ async def tag_mod(ctx):
     await ctx.send(f'Hello {moderator.mention}!')
 
 
-bot.run('ODE5MjMzODI4OTAzODQ1OTE4.YEjo9Q.dW3QwZ_BQirfiPUMl6XIxgJ6RPY')
+bot.run(DISCORD_TOKEN)
