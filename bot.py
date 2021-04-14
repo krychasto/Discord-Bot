@@ -31,7 +31,7 @@ async def ping(ctx):
 @bot.command()
 async def apitest(ctx):
     response = requests.get("https://secret-sea-99270.herokuapp.com/events")
-    await ctx.send(f'{response.status_code}')
+    await ctx.send(f'{response}')
 
 @bot.command()
 async def tag_user(ctx, member : discord.Member, *, message):
