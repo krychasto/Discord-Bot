@@ -3,6 +3,7 @@ from discord.ext import commands
 import datetime
 from discord.utils import get
 from decouple import config
+import requests
 
 bot = commands.Bot(command_prefix = '.zp ')
 
@@ -26,6 +27,11 @@ async def ping(ctx):
     embed.add_field(name="Utworzone przez", value='XYZ', inline=True)
 
     await ctx.send(embed=embed)
+
+@bot.command()
+async def apitest(ctx):
+    response = requests.get("https://secret-sea-99270.herokuapp.com/events")
+    await ctx.send(f'{response.status_code}')
 
 @bot.command()
 async def tag_user(ctx, member : discord.Member, *, message):
