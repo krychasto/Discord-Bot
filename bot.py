@@ -5,7 +5,7 @@ from discord.utils import get
 from decouple import config
 import requests
 
-bot = commands.Bot(command_prefix = '.zp ')
+bot = commands.Bot(command_prefix = '.zpo ')
 
 DISCORD_TOKEN = config('DISCORD_TOKEN')
 
@@ -20,7 +20,7 @@ async def dm(ctx, *, message):
 @bot.command()
 async def ping(ctx):
     moderator = get(ctx.guild.roles, id=824187269363007490)
-    embed = discord.Embed(title="Kolokwium z pogramowania", colour=discord.Colour(0x108510), url="https://discordapp.com", description=" Zagadnienia na kolokwium są na stronie [XYZ](https://pl.wikipedia.org/wiki/Programowanie_komputerów)", timestamp=datetime.datetime(2021,3,10))
+    embed = discord.Embed(title="Kolokwium z programowania", colour=discord.Colour(0x108510), url="https://discordapp.com", description=" Zagadnienia na kolokwium są na stronie [XYZ](https://pl.wikipedia.org/wiki/Programowanie_komputerów)", timestamp=datetime.datetime(2021,3,10))
     embed.set_image(url="https://www.perforce.com/sites/default/files/image/2019-01/image-blog-what-code-quality.jpg")
     embed.add_field(name="Termin", value="25.03.2021")
     embed.add_field(name="Role", value=f'{moderator.mention}', inline=True)
