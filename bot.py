@@ -5,7 +5,7 @@ from discord.utils import get
 from decouple import config
 import requests
 
-bot = commands.Bot(command_prefix = '.zpo ')
+bot = commands.Bot(command_prefix = '.zpo ') #This is new command prefix for discord bot
 
 DISCORD_TOKEN = config('DISCORD_TOKEN')
 
